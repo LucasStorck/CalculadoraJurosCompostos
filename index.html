@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <main id="container">
+      <section id="img">
+        <img src="/assets/img/investing.svg" alt="Ilustração" srcset="" />
+      </section>
+      <section id="calculator">
+        <form id="form">
+          <h1 id="title">Calculadora de Juros Compostos</h1>
+          <div class="input_box">
+            <label for="valor_inicial">Valor Inicial</label>
+            <div class="input_field">
+              <i class="fa-solid fa-dollar-sign"></i>
+              <input
+                type="number"
+                id="valor_inicial"
+                name="valor_inicial"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input_box">
+            <label for="taxa_juros">Taxa de Juros</label>
+            <div class="input_field">
+              <i class="fa-solid fa-percent"></i>
+              <input type="number" id="taxa_juros" name="taxa_juros" required />
+            </div>
+          </div>
+
+          <div class="input_box">
+            <label for="tempo">Tempo</label>
+            <div class="input_field">
+              <i class="fa-regular fa-calendar"></i>
+              <input type="number" id="tempo" name="tempo" required />
+            </div>
+          </div>
+
+          <button type="submit" id="calculate">Calcular</button>
+        </form>
+        <div id="infos" class="hidden">
+          <div class="result">
+            <div id="return">
+              <span></span>
+            </div>
+            <div id="interest">
+              <span></span>
+            </div>
+            <div id="more_infos">
+              <a
+                target="_blank"
+                href="https://brasilescola.uol.com.br/matematica/juros-compostos.htm"
+              >
+                Sobre o Juros Compostos
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/js/script.js"></script>
+  </body>
+</html>

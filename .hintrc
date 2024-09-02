@@ -1,0 +1,7 @@
+{
+  "extends": ["development"],
+  "hints": {
+    "button-type": "off",
+    "disown-opener": "off"
+  }
+}
