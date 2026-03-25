@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -11,68 +16,246 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Calculadora</title>
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <link rel="stylesheet" href="./assets/css/layout.css" />
+    <link rel="stylesheet" href="./assets/css/components.css" />
+    <title>InvestCalc</title>
   </head>
   <body>
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
     <main id="container">
+      <!-- Esquerda: Imagem -->
       <section id="img">
-        <img src="/assets/img/investing.svg" alt="Ilustração" srcset="" />
+        <img
+          src="./assets/img/investing.svg"
+          alt="Ilustração de Investimentos"
+        />
+        <div class="hero-text">
+          <h2>O poder dos Juros Compostos</h2>
+          <p>
+            Simule seus investimentos em Renda Fixa (CDB, LCI, Tesouro) e veja
+            seu patrimônio crescer.
+          </p>
+        </div>
       </section>
+
+      <!-- Direita: Calculadora -->
       <section id="calculator">
         <form id="form">
-          <h1 id="title">Calculadora de Juros Compostos</h1>
-          <div class="input_box">
-            <label for="valor_inicial">Valor Inicial</label>
-            <div class="input_field">
-              <i class="fa-solid fa-dollar-sign"></i>
-              <input
-                type="number"
-                id="valor_inicial"
-                name="valor_inicial"
-                required
-              />
+          <header class="calc-header">
+            <h1 id="title">InvestCalc</h1>
+            <p class="subtitle">Descubra quanto seu dinheiro pode render.</p>
+          </header>
+
+          <div class="inputs-grid">
+            <!-- Tipo de Investimento -->
+            <div class="input_box full-width">
+              <label for="tipo_investimento">Tipo de Investimento</label>
+              <div class="input_field rate-field">
+                <i class="fa-solid fa-chart-pie"></i>
+                <select
+                  id="tipo_investimento"
+                  name="tipo_investimento"
+                  style="width: 100%; padding-left: 0.5rem; font-size: 1.05rem"
+                >
+                  <option value="fixo">Padrão (Taxa Fixa)</option>
+                  <option value="cdb">CDB (IR Regressivo)</option>
+                  <option value="lci_lca">LCI / LCA (Isento de IR)</option>
+                  <option value="tesouro_selic">
+                    Tesouro Selic (IR Regressivo)
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Valor Inicial -->
+            <div class="input_box">
+              <label for="valor_inicial">Valor Inicial</label>
+              <div class="input_field">
+                <i class="fa-solid fa-brazilian-real-sign"></i>
+                <input
+                  type="text"
+                  id="valor_inicial"
+                  name="valor_inicial"
+                  placeholder="0,00"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Aporte Mensal -->
+            <div class="input_box">
+              <label for="aporte_mensal">Aporte Mensal</label>
+              <div class="input_field">
+                <i class="fa-solid fa-plus"></i>
+                <input
+                  type="text"
+                  id="aporte_mensal"
+                  name="aporte_mensal"
+                  placeholder="0,00"
+                />
+              </div>
+            </div>
+
+            <!-- Tempo -->
+            <div class="input_box">
+              <label for="tempo">Prazo</label>
+              <div class="input_field rate-field">
+                <i class="fa-regular fa-calendar-days"></i>
+                <input
+                  type="number"
+                  id="tempo"
+                  name="tempo"
+                  placeholder="0"
+                  step="1"
+                  min="1"
+                  required
+                />
+                <select id="tipo_tempo" name="tipo_tempo">
+                  <option value="meses">meses</option>
+                  <option value="anos" selected>anos</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- [Container] Taxa Padrão -->
+            <div class="input_box dynamic-box" id="box_taxa_fixa">
+              <label for="taxa_juros">Rentabilidade Fixa</label>
+              <div class="input_field rate-field">
+                <i class="fa-solid fa-percent"></i>
+                <input
+                  type="text"
+                  id="taxa_juros"
+                  name="taxa_juros"
+                  placeholder="0,00"
+                />
+                <select id="tipo_taxa" name="tipo_taxa">
+                  <option value="mensal">ao mês</option>
+                  <option value="anual" selected>ao ano</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- [Container] CDI -->
+            <div class="input_box dynamic-box hidden-input" id="box_cdi">
+              <label for="taxa_cdi">Taxa CDI Hoje (% ao ano)</label>
+              <div class="input_field">
+                <i class="fa-solid fa-percent"></i>
+                <input
+                  type="text"
+                  id="taxa_cdi"
+                  name="taxa_cdi"
+                  placeholder="10,40"
+                  value="10,40"
+                />
+              </div>
+            </div>
+            <div
+              class="input_box dynamic-box hidden-input"
+              id="box_cdi_percent"
+            >
+              <label for="percentual_cdi">Quanto do CDI paga? (%)</label>
+              <div class="input_field">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                <input
+                  type="text"
+                  id="percentual_cdi"
+                  name="percentual_cdi"
+                  placeholder="110,00"
+                  value="100,00"
+                />
+              </div>
+            </div>
+
+            <!-- [Container] Selic -->
+            <div class="input_box dynamic-box hidden-input" id="box_selic">
+              <label for="taxa_selic">Taxa Selic Hoje (% ao ano)</label>
+              <div class="input_field">
+                <i class="fa-solid fa-percent"></i>
+                <input
+                  type="text"
+                  id="taxa_selic"
+                  name="taxa_selic"
+                  placeholder="10,50"
+                  value="10,50"
+                />
+              </div>
+            </div>
+            <div
+              class="input_box dynamic-box hidden-input"
+              id="box_selic_extra"
+            >
+              <label for="selic_extra">Taxa Fixa Adicional (%)</label>
+              <div class="input_field">
+                <i class="fa-solid fa-plus-minus"></i>
+                <input
+                  type="text"
+                  id="selic_extra"
+                  name="selic_extra"
+                  placeholder="0,15"
+                  value="0,15"
+                />
+              </div>
             </div>
           </div>
 
-          <div class="input_box">
-            <label for="taxa_juros">Taxa de Juros</label>
-            <div class="input_field">
-              <i class="fa-solid fa-percent"></i>
-              <input type="number" id="taxa_juros" name="taxa_juros" required />
-            </div>
-          </div>
-
-          <div class="input_box">
-            <label for="tempo">Tempo</label>
-            <div class="input_field">
-              <i class="fa-regular fa-calendar"></i>
-              <input type="number" id="tempo" name="tempo" required />
-            </div>
-          </div>
-
-          <button type="submit" id="calculate">Calcular</button>
+          <button type="submit" id="calculate">
+            Calcular Rentabilidade <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </form>
+
         <div id="infos" class="hidden">
-          <div class="result">
-            <div id="return">
-              <span></span>
+          <div class="results-cards">
+            <div class="result-card total-card">
+              <span class="card-label">Valor Bruto Final</span>
+              <span class="card-value" id="gross-value">R$ 0,00</span>
             </div>
-            <div id="interest">
-              <span></span>
-            </div>
-            <div id="more_infos">
-              <a
-                target="_blank"
-                href="https://brasilescola.uol.com.br/matematica/juros-compostos.htm"
+            <div class="result-card secondary-card">
+              <span class="card-label">Valor Líquido (Já sem IR)</span>
+              <span class="card-value" id="net-value" style="color: #22d3ee"
+                >R$ 0,00</span
               >
-                Sobre o Juros Compostos
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
             </div>
+            <div class="result-card secondary-card highlight-card">
+              <span class="card-label">Total Gasto em Imposto</span>
+              <span class="card-value" id="tax-value" style="color: #f43f5e"
+                >R$ 0,00</span
+              >
+            </div>
+            <div class="result-card secondary-card" style="grid-column: span 2">
+              <span class="card-label">Total Investido (Sem Juros)</span>
+              <span
+                class="card-value"
+                id="invested-value"
+                style="font-size: 1.2rem; color: #94a3b8"
+                >R$ 0,00</span
+              >
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+          </div>
+
+          <div id="more_infos">
+            <a
+              target="_blank"
+              href="https://brasilescola.uol.com.br/matematica/juros-compostos.htm"
+              rel="noopener noreferrer"
+            >
+              Entenda as taxas regressivas de IR
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
           </div>
         </div>
       </section>
     </main>
-    <script src="/assets/js/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

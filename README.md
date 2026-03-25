@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Calculadora de Juros Compostos</h1>
+  <h1>InvestCalc</h1>
   <img src="https://github.com/user-attachments/assets/af0f12bd-a0e7-48de-8ab2-1086ea297e64" height="400px" width="800px">
   <p>Calculadora que estima os ganhos com juros compostos a partir do valor inicial, a taxa de juros e o tempo.</p>
   

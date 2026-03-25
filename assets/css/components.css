@@ -1,141 +1,4 @@
-:root {
-  --bg-color: #0d0e15;
-  --glass-bg: rgba(26, 28, 41, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --accent: #22d3ee;
-  --danger: #f43f5e;
-  --success: #10b981;
-}
-
-* {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  position: relative;
-  overflow-x: hidden;
-}
-
-.background-blobs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.5;
-  animation: float 10s infinite alternate ease-in-out;
-}
-
-.blob-1 {
-  top: -10%;
-  left: -10%;
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, rgba(99,102,241,0) 70%);
-}
-
-.blob-2 {
-  bottom: -20%;
-  right: -10%;
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(34,211,238,0.3) 0%, rgba(34,211,238,0) 70%);
-  animation-delay: -5s;
-}
-
-@keyframes float {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(30px) scale(1.1); }
-}
-
-#container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4rem;
-  width: 100%;
-  max-width: 1200px;
-  padding: 2rem;
-  z-index: 1;
-}
-
-#img {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 500px;
-}
-
-#img img {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
-  animation: levitate 6s ease-in-out infinite;
-}
-
-@keyframes levitate {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-.hero-text {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.hero-text h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(to right, var(--text-main), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-text p {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-#calculator {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 2.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-}
-
+/* Form Styles */
 #form {
   display: flex;
   flex-direction: column;
@@ -157,6 +20,7 @@ body {
   font-size: 0.95rem;
 }
 
+/* Inputs Grid */
 .inputs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -221,6 +85,7 @@ body {
   color: rgba(255, 255, 255, 0.2);
 }
 
+/* Removes arrows from number inputs */
 .input_field input::-webkit-outer-spin-button,
 .input_field input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -231,6 +96,7 @@ body {
   -moz-appearance: textfield;
 }
 
+/* Select Box inside input field */
 .rate-field select {
   background: transparent;
   color: var(--text-main);
@@ -247,6 +113,7 @@ body {
   color: #fff;
 }
 
+/* Submit Button */
 #calculate {
   background: linear-gradient(135deg, var(--primary), var(--primary-hover));
   color: #fff;
@@ -272,6 +139,7 @@ body {
   transform: translateY(0);
 }
 
+/* Results Section */
 .hidden {
   display: none !important;
 }
@@ -362,50 +230,4 @@ body {
 
 #more_infos a:hover {
   opacity: 0.8;
-}
-
-@media screen and (max-width: 968px) {
-  #container {
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 2rem;
-  }
-
-  #img {
-    display: none;
-  }
-
-  #calculator {
-    width: 100%;
-    max-width: 600px;
-    padding: 2rem;
-  }
-
-  .blob-1, .blob-2 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #calculator {
-    padding: 1.5rem;
-    border-radius: 16px;
-  }
-
-  .calc-header {
-    text-align: center;
-  }
-
-  .inputs-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .full-width, .total-card {
-    grid-column: span 1 !important;
-  }
-
-  .results-cards {
-    grid-template-columns: 1fr;
-  }
 }
