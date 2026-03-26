@@ -12,7 +12,7 @@
 }
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -53,7 +53,11 @@ body {
   left: -10%;
   width: 50vw;
   height: 50vw;
-  background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, rgba(99,102,241,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.4) 0%,
+    rgba(99, 102, 241, 0) 70%
+  );
 }
 
 .blob-2 {
@@ -61,13 +65,21 @@ body {
   right: -10%;
   width: 60vw;
   height: 60vw;
-  background: radial-gradient(circle, rgba(34,211,238,0.3) 0%, rgba(34,211,238,0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(34, 211, 238, 0.3) 0%,
+    rgba(34, 211, 238, 0) 70%
+  );
   animation-delay: -5s;
 }
 
 @keyframes float {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(30px) scale(1.1); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(30px) scale(1.1);
+  }
 }
 
 #container {
@@ -93,13 +105,18 @@ body {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
   animation: levitate 6s ease-in-out infinite;
 }
 
 @keyframes levitate {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .hero-text {
@@ -152,11 +169,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.subtitle {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
 .inputs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -172,7 +184,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: opacity 0.3s ease, height 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    height 0.3s ease;
 }
 
 .hidden-input {
@@ -226,7 +240,7 @@ body {
   -webkit-appearance: none;
   margin: 0;
 }
-.input_field input[type=number] {
+.input_field input[type="number"] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
@@ -256,7 +270,9 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -283,8 +299,14 @@ body {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .results-cards {
@@ -297,7 +319,11 @@ body {
 
 .total-card {
   grid-column: span 2;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(34, 211, 238, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.2),
+    rgba(34, 211, 238, 0.1)
+  );
   border: 1px solid rgba(99, 102, 241, 0.3);
 }
 
@@ -381,7 +407,8 @@ body {
     padding: 2rem;
   }
 
-  .blob-1, .blob-2 {
+  .blob-1,
+  .blob-2 {
     display: none;
   }
 }
@@ -401,7 +428,8 @@ body {
     gap: 1rem;
   }
 
-  .full-width, .total-card {
+  .full-width,
+  .total-card {
     grid-column: span 1 !important;
   }
 

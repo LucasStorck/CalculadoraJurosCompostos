@@ -1,4 +1,3 @@
-/* Main Container Layout */
 #container {
   display: flex;
   align-items: center;
@@ -10,7 +9,6 @@
   z-index: 1;
 }
 
-/* Left Section: Image */
 #img {
   flex: 1;
   display: flex;
@@ -23,13 +21,18 @@
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
   animation: levitate 6s ease-in-out infinite;
 }
 
 @keyframes levitate {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .hero-text {
@@ -52,7 +55,6 @@
   line-height: 1.6;
 }
 
-/* Right Section: Calculator Box */
 #calculator {
   flex: 1;
   display: flex;
@@ -67,7 +69,6 @@
   transition: all 0.3s ease;
 }
 
-/* Responsive Layout */
 @media screen and (max-width: 968px) {
   #container {
     flex-direction: column;
@@ -85,7 +86,8 @@
     padding: 2rem;
   }
 
-  .blob-1, .blob-2 {
+  .blob-1,
+  .blob-2 {
     display: none;
   }
 }
@@ -105,7 +107,8 @@
     gap: 1rem;
   }
 
-  .full-width, .total-card {
+  .full-width,
+  .total-card {
     grid-column: span 1 !important;
   }
 
